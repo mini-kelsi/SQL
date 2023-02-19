@@ -1,0 +1,29 @@
+--Within this SQL code, I am pulling parts of a database containing Netflix data to answer certain questions regarding said data.
+
+-- How many movie titles are there in the database? (movies only)
+Select Count(*)
+From "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+where type = 'Movie';
+
+--When was the movst recent batch of tv shows and/or movies added to the database?
+Select Max(date(date_added))
+From "CharlotteChaze/BreakIntoTech"."netflix_titles_info";
+
+--List all the movies and tv shows in alphabetical order.
+Select title
+From "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+Order by title ASC;
+
+--Who was the director for the movie Bright Star?
+Select director
+From "CharlotteChaze/BreakIntoTech"."netflix_titles_info" titles
+Left Join "CharlotteChaze/BreakIntoTech"."netflix_people" people
+on titles.show_id=people.show_id
+Where titles.title='Bright Star';
+
+--What is the oldest movie in the database and what year was it made?
+Select title, release_year
+From "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+Where type='Movie'
+Order by release_year asc
+Limit 1;
