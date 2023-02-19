@@ -1,0 +1,21 @@
+--Create a shoe store database
+
+CREATE TABLE store (id INTEGER PRIMARY KEY, Shoe TEXT, Quantity INTEGER, Price INTEGER);
+
+INSERT INTO store VALUES (1, "High Heels", 4, 15);
+INSERT INTO store VALUES (2, "Sneakers", 7, 20);
+INSERT INTO store VALUES (3, "Flip Flops", 2, 4);
+INSERT INTO store VALUES (4, "Sandels", 1, 9);
+INSERT INTO store VALUES (5, "Boots", 1, 50);
+
+--display the database ordered by price
+
+Select * from store 
+order by price;
+
+--what is the most sold item in the store?
+
+Select Shoe, sum(quantity) 
+from store 
+group by shoe
+order by quantity desc;
