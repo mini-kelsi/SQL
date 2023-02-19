@@ -1,0 +1,37 @@
+--Create two Stephen King databases regarding his books and movies
+
+CREATE TABLE Books (id INTEGER PRIMARY KEY, title TEXT, year INTEGER);
+
+INSERT INTO Books (title, year) VALUES ("It", "1986");
+INSERT INTO Books (title, year) VALUES ("Salem's Lot", "1975");
+INSERT INTO Books (title, year) VALUES ("The Institute", "2019");
+INSERT INTO Books (title, year) VALUES ("Pet Sematary", "1983");
+INSERT INTO Books (title, year) VALUES ("Cujo", "1981");
+INSERT INTO Books (title, year) VALUES ("Carrie", "1974");
+INSERT INTO Books (title, year) VALUES ("In the Tall Grass", "2012");
+INSERT INTO Books (title, year) VALUES ("Bag of Bones", "1998");
+
+--Complete table generated from Books 
+Select * from Books;
+
+CREATE TABLE Genre (id INTEGER PRIMARY KEY, title TEXT, genre TEXT, movie TEXT);
+
+INSERT INTO Genre (title, genre, movie) VALUES ("It", "Dark Fantasy", "Yes");
+INSERT INTO Genre (title, genre, movie) VALUES ("Salem's Lot", "Gothic Fiction", "Yes");
+INSERT INTO Genre (title, genre, movie) VALUES ("The Institute", "Suspense", "No");
+INSERT INTO Genre (title, genre, movie) VALUES ("Pet Sematary", "Supernatural Horror", "Yes");
+INSERT INTO Genre (title, genre, movie) VALUES ("Cujo", "Thriller Horror", "Yes");
+INSERT INTO Genre (title, genre, movie) VALUES ("Carrie", "Thriller Horror", "Yes");
+INSERT INTO Genre (title, genre, movie) VALUES ("In the Tall Grass", "Supernatural Horror", "Yes");
+INSERT INTO Genre (title, genre, movie) VALUES ("Bag of Bones", "Gothic Fiction", "Yes");
+
+--Complete table genereated from Genre
+Select * from Genre;
+
+--Pulling certain data from both tables above to create a new table that connects the data points together
+Select Books.title, Books.year, Genre.genre, Genre.movie
+From Books
+Join Genre
+On Books.id=Genre.id
+    
+    
