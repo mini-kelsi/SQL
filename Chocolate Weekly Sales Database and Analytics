@@ -1,5 +1,7 @@
 --In this project, I used SQL to create 2 different tables that regard
 chocolate sales at a store and the corresponding brands.
+--I then used analytics to explore through the data gathered.
+
 
 CREATE TABLE Chocolate 
 (id INTEGER PRIMARY KEY, type TEXT,brand_id INTEGER, daily_sales INTEGER);
