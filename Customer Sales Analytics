@@ -48,7 +48,7 @@ what was the average amount spent for those customers?
 
 Select 
 count(cust.acctnum),
-avg(quantity)*price
+avg(quantity*price)
 from BIT_DB.FebSales as Feb
 Left Join BIT_DB.customers as cust
 On Feb.orderID= cust.order_id
