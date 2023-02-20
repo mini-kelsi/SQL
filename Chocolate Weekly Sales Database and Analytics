@@ -1,0 +1,73 @@
+--In this project, I used SQL to create 2 different tables that regard
+chocolate sales at a store and the corresponding brands.
+
+CREATE TABLE Chocolate 
+(id INTEGER PRIMARY KEY, type TEXT,brand_id INTEGER, daily_sales INTEGER);
+
+INSERT INTO Chocolate VALUES (1, 'Snickers', 6, 8);
+INSERT INTO Chocolate VALUES (2, 'Reeses Peanut Butter Cups', 2, 7);
+INSERT INTO Chocolate VALUES (3, 'Hershey Milk Chocolate', 2, 13);
+INSERT INTO Chocolate VALUES (4, 'Hershey Dark Chocolate', 2, 8);
+INSERT INTO Chocolate VALUES (5, 'Mars Bar', 6, 6);
+INSERT INTO Chocolate VALUES (6, 'Cadbury Mini Eggs', 7, 10);
+INSERT INTO Chocolate VALUES (7, 'Tootsie Roll', 8, 4);
+INSERT INTO Chocolate VALUES (8, 'Dove Milk Chocolate', 4, 11);
+INSERT INTO Chocolate VALUES (9, 'Dove Dark Chocolate', 4, 9);
+INSERT INTO Chocolate VALUES (10, 'Lindor Milk', 1, 15);
+INSERT INTO Chocolate VALUES (11, 'Lindor Strawberry Cream', 1, 8);
+INSERT INTO Chocolate VALUES (12, 'Hershey Kisses', 2, 9);
+INSERT INTO Chocolate VALUES (13, 'Hershey Cookies n Cream',2 , 5);
+INSERT INTO Chocolate VALUES (14, 'Kitkat Bars', 2, 6);
+INSERT INTO Chocolate VALUES (15, 'Lindor Milk Chocolate Truffles', 1, 7);
+INSERT INTO Chocolate VALUES (16, 'Butterfinger', 5, 6);
+INSERT INTO Chocolate VALUES (17, 'Dove Deepest Dark Chocolate', 4, 5);
+INSERT INTO Chocolate VALUES (18, 'Reese_s Pieces', 2, 7);
+INSERT INTO Chocolate VALUES (19, '3 Muskeeters', 6, 13);
+INSERT INTO Chocolate VALUES (20, 'Milky War', 6, 4);
+INSERT INTO Chocolate VALUES (21, 'Rolo', 3, 2);
+INSERT INTO Chocolate VALUES (22, 'Twix', 6, 3);
+INSERT INTO Chocolate VALUES (23, 'Almond Joy', 2, 3);
+INSERT INTO Chocolate VALUES (24, 'Milk Duds', 2, 1);
+INSERT INTO Chocolate VALUES (25, 'Crunch Bar', 3, 7);
+
+-- This is so I can have a complete view of the table above.
+
+SELECT * FROM Chocolate;
+
+CREATE TABLE Brands (id INTEGER PRIMARY KEY, brand TEXT);
+
+INSERT INTO Brands VALUES (1, 'Lindt');
+INSERT INTO Brands VALUES (2, 'Hershey');
+INSERT INTO Brands VALUES (3, 'Nestle');
+INSERT INTO Brands VALUES (4, 'Dove');
+INSERT INTO Brands VALUES (5, 'Ferrero');
+INSERT INTO Brands VALUES (6, 'Mars_Inc');
+INSERT INTO Brands VALUES (7, 'Cadbury');
+INSERT INTO Brands VALUES (8, 'Tootsie Roll Ind');
+
+-- Full view of the table above.
+Select * from Brands;
+
+--Which brands correspond to each chocolate sold?
+Select Chocolate.type, Chocolate.daily_sales, Brands.brand
+from Chocolate
+Join Brands
+Where Chocolate.brand_id= Brands.id
+Group by Chocolate.type;
+
+--Which chocolate sold the most?
+
+Select type, max(daily_sales)
+From Chocolate;
+
+--Which chocolate sold the least?
+
+Select type, min(daily_sales)
+From Chocolate;
+
+--Which chocolates sold more than 6 and ordered from most to least?
+
+Select type, daily_sales
+From Chocolate
+Where daily_sales >6
+Order by daily_sales Desc;
