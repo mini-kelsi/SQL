@@ -1,0 +1,65 @@
+--With this project, I was able to download data regarding Spotify from Kaggle.
+--With these data, I created a table to insert the information into.
+--With the mentioned table, I then performed analytics with the data using SQL.
+
+CREATE TABLE BIT_DB.Spotifydata (
+id integer PRIMARY KEY,
+artist_name varchar NOT NULL,
+track_name varchar NOT NULL,
+track_id varchar NOT NULL,
+popularity integer NOT NULL,
+danceability decimal(4,3) NOT NULL,
+energy decimal(4,3) NOT NULL,
+song_key integer NOT NULL,
+loudness decimal(5,3) NOT NULL,
+song_mode integer NOT NULL,
+speechiness decimal(5,4) NOT NULL,
+acousticness decimal(6,5) NOT NULL,
+instrumentalness text NOT NULL,
+liveness decimal(5,4) NOT NULL,
+valence decimal(4,3) NOT NULL,
+tempo decimal(6,3) NOT NULL,
+duration_ms integer NOT NULL,
+time_signature integer NOT NULL )
+
+--I was able to insert the Spotify Data .csv into the table from above.
+
+--Then I looked into different aspects of the data using the SQL below.
+
+--Which song has the longest duration?
+
+SELECT track_name, artist_name, duration_ms
+FROM BIT_DB.Spotifydata
+ORDER BY duration_ms DESC
+LIMIT 1;
+
+--OR
+
+SELECT MAX(duration_ms)
+FROM BIT_DB.Spotifydata;
+
+--Who are the top 10 artist by popularity?
+
+SELECT track_name, artist_name, popularity
+FROM BIT_DB.spotifydata
+ORDER BY popularity desc
+LIMIT 10
+
+--Who are the bottom 10 artist by popularity?
+SELECT track_name, artist_name, popularity
+FROM BIT_DB.Spotifydata
+ORDER BY popularity ASC
+LIMIT 10;
+
+--What is the average duration for all the songs?
+
+SELECT avg(duration_ms)
+FROM BIT_DB.Spotifydata;
+
+--Which songs have a popularity over 90 and tempo over 160?
+
+SELECT * 
+FROM BIT_DB.Spotifydata
+WHERE popularity > 90
+AND tempo >160;
+
