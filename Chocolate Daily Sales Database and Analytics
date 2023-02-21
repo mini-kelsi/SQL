@@ -73,3 +73,24 @@ Select type, daily_sales
 From Chocolate
 Where daily_sales >6
 Order by daily_sales Desc;
+
+What is the average amount of chocolate sold daily?
+
+Select avg(daily_sales)
+From Chocolate;
+
+-- How many types of chocolate are sold daily?
+
+Select count(type)
+from Chocolate;
+
+--Which types of chocolate with brands sold more than 8 but less than 14 pieces?
+
+Select Chocolate.type, Chocolate.daily_sales, Brands.brand
+from Chocolate
+Join Brands
+Where Chocolate.brand_id= Brands.id
+AND daily_sales > 8
+AND daily_sales < 14
+Group by Chocolate.type
+Order by daily_sales DESC;
